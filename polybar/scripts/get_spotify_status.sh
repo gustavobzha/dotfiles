@@ -8,7 +8,7 @@ PARENT_BAR="topbar"
 # Examples: spotify, vlc, chrome, mpv and others.
 # Use `playerctld` to always detect the latest player.
 # See more here: https://github.com/altdesktop/playerctl/#selecting-players-to-control
-PLAYER="playerctld"
+PLAYER="spotify"
 
 # Format of the information displayed
 # Eg. {{ artist }} - {{ album }} - {{ title }}

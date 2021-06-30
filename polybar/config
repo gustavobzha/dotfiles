@@ -132,7 +132,7 @@ hook-1 = echo ""
 initial = 1
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-click-left = playerctl play-pause spotify
+click-left = playerctl --player=spotify play-pause 
 click-right = spotify
 
 [module/spotify]
@@ -249,6 +249,7 @@ sink = alsa_output.pci-0000_12_00.3.analog-stereo
 use-ui-max = true
 interval = 5
 format-volume = <ramp-volume> <label-volume>
+#format-volume = ~/.config/rofi/applets/applets/volume.sh & 
 label-muted =  Muted
 label-muted-foreground = #666
 ramp-volume-0 = 
