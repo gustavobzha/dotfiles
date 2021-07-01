@@ -232,6 +232,10 @@ bindsym $mod+Shift+s exec --no-startup-id maim --select | xclip -selection clipb
 
 # Rofi Launcher
 bindsym Mod1+space exec --no-startup-id ~/.config/rofi/launchers/colorful/launcher.sh
+
+# Rofi File Finder
+bindsym $mod+p exec rofi -show file-browser-extended -file-browser-depth 0 -width 1000
+
 # Focus follows mouse
 focus_follows_mouse no
 
