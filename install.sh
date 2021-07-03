@@ -3,9 +3,9 @@
 yes | sudo pacman -Syyu
 
 
-yes | sudo pacman -S feh rofi lxappearance maim arandr xrandr dmenu xdootool gucharmap bdf-unifont ttf-anonymous-pro xorg-xfd python-mpd2 python-iwlib khal playerctl wget unzip neovim nodejs npm fzf ranger ripgrep xclip yarn python-pipenv the_silver_searcher tmux neofetch autojump zsh zshdb powerline-fonts dos2unix
+yes | sudo pacman -S feh rofi lxappearance maim arandr xrandr dmenu xdootool gucharmap bdf-unifont ttf-anonymous-pro xorg-xfd python-mpd2 python-iwlib khal playerctl wget unzip neovim nodejs npm fzf ranger ripgrep xclip yarn python-pipenv the_silver_searcher tmux neofetch autojump zsh zshdb powerline-fonts dos2unix linux-headers
 
-yes | yay -S pygtk ptxconf-git nerd-fonts-complete mpris-ctl polybar-git font-awesome zscroll-git
+yes | yay -S pygtk ptxconf-git nerd-fonts-complete mpris-ctl polybar-git font-awesome zscroll-git openrazer-meta polychromatic rofi-file-browser-extended-git
 
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
@@ -16,6 +16,7 @@ mv polybar/* $HOME/.config/polybar/
 chmod +x $HOME/.config/polybar/launch.sh
 mv /i3/* $HOME/.config/i3/
 feh --bg-scale $HOME/.config/i3/wallpaper.jpg
+mv rofi/* $HOME/.config/rofi/
 
 
 mv .tmux.conf ~/.tmux.conf
@@ -37,18 +38,10 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 cd ..
 rm -rf autojump
 
-# Download Oh-My-Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Download Zinit, zshell plugin manager. PS: Don't install recommended plugins
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
-
-# Download and Install spaceship prompt, zshell theme
-git clone https://github.com/denysdovhan/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
-ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+# Starship cross-shell prompt for bash
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
 #Install Vim Plugins and Coc Plugins
 nvim -c ':PlugInstall | quit | quit | quit'
-
 # Set zshell as default
 chsh -s $(which zsh)
