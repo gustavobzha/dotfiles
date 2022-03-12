@@ -2,22 +2,25 @@
 
 yes | sudo pacman -Syyu
 
+yes | sudo pacman -S feh rofi lxappearance maim arandr gcolor2 dmenu xdotool gucharmap bdf-unifont ttf-anonymous-pro xorg-xfd python-mpd2 python-iwlib khal playerctl wget unzip neovim nodejs npm fzf ranger ripgrep xclip yarn python-pipenv the_silver_searcher tmux neofetch zsh zshdb powerline-fonts dos2unix linux-headers ttf-font-awesome
 
-yes | sudo pacman -S feh rofi lxappearance maim arandr dmenu xdotool gucharmap bdf-unifont ttf-anonymous-pro xorg-xfd python-mpd2 python-iwlib khal playerctl wget unzip neovim nodejs npm fzf ranger ripgrep xclip yarn python-pipenv the_silver_searcher tmux neofetch zsh zshdb powerline-fonts dos2unix linux-headers ttf-font-awesome
+yay -S pygtk ptxconf-git nerd-fonts-complete mpris-ctl polybar-git zscroll-git openrazer-meta polychromatic rofi-file-browser-extended-git
 
-yay -S pygtk ptxconf-git nerd-fonts-complete mpris-ctl polybar-git zscroll-git openrazer-meta polychromatic rofi-file-browser-extended-git autojump 
+#install rofi launcher themes
+git clone --depth=1 https://github.com/adi1090x/rofi.git
+cd rofi
+chmod +x setup.sh
+./setup.sh
+cd ..
+rm -rf rofi
 
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-
-mkdir -p $HOME/.local/share/fonts
-mv fonts/* $HOME/.local/share/fonts/
+mkdir -p ~/.local/share/fonts
+mv fonts/* ~/.local/share/fonts/
 fc-cache -fv
-mv polybar/* $HOME/.config/polybar/
-chmod +x $HOME/.config/polybar/launch.sh
-mv /i3/* $HOME/.config/i3/
-feh --bg-scale $HOME/.config/i3/wallpaper.jpg
-mv rofi/* $HOME/.config/rofi/
-
+cp -R i3status ~/.config/i3status
+mv /i3/* ~/.config/i3/
+feh --bg-scale ~/.config/i3/wallpaper.jpg
+mv rofi/launcher.sh ~/.config/rofi/launchers/colorful/
 
 mv .tmux.conf ~/.tmux.conf
 mv .vim ~/.vim 
@@ -38,10 +41,13 @@ sudo ln -s /usr/bin/python3 /usr/bin/python
 cd ..
 rm -rf autojump
 
-# Starship cross-shell prompt for bash
-sh -c "$(curl -fsSL https://starship.rs/install.sh)"
-
 #Install Vim Plugins and Coc Plugins
 nvim -c ':PlugInstall | quit | quit | quit'
 # Set zshell as default
 chsh -s $(which zsh)
+
+#Install Zinit - plugin manager for zsh
+sh -c "$(curl -fsSL https://git.io/zinit-install)"
+
+# Add some Zsh configs
+cat zsh_config >> ~/.zshrc

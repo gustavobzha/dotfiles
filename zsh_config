@@ -1,0 +1,21 @@
+zinit light spaceship-prompt/spaceship-prompt
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zdharma/fast-syntax-highlighting
+zinit pack for ls_colors
+
+# Hide % on start
+unsetopt PROMPT_SP 
+
+# Autojump settings
+[[ -s /home/$USER/.autojump/etc/profile.d/autojump.sh ]] && source /home/$USER/.autojump/etc/profile.d/autojump.sh
+
+autoload -U compinit && compinit -u
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias python3='python'
+alias i3config='nvim ~/.config/i3/config'
+alias polybarcfg='nvim ~/.config/polybar/config'
+alias sysenable='systemctl list-unit-files --state=enabled'
+source /usr/share/nvm/init-nvm.sh

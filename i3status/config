@@ -1,0 +1,59 @@
+general {
+        colors = true
+        interval = 5
+}
+
+
+order += "disk /"
+order += "disk /home"
+order += "cpu_temperature 0"
+order += "cpu_usage"
+order += "memory"
+order += "volume master"
+order += "tztime local"
+order += "tztime campo_grande"
+
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+        hide_if_equals_localtime = true
+}
+
+tztime campo_grande {
+        //format = "%Y-%m-%d %H:%M:%S %Z"
+        format = "%A, %d %b %Y %H:%M"
+        timezone = "America/Campo_Grande"
+}
+
+
+cpu_temperature 0 {
+        format = "T: %degrees °C"
+        path = "/sys/devices/platform/PNP0C0C:00/firmware_node/subsystem/devices/PNP0A08:00/physical_node/0000:00:18.3/hwmon/hwmon1/temp1_input"
+        
+}
+
+memory {
+        format = "%used"
+        threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+}
+
+disk "/" {
+        format = "root: %free"
+}
+
+disk "/home" {
+        format = "home: %free"
+}
+
+cpu_usage {
+        format = "CPU: %usage" 
+}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
