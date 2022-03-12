@@ -3,9 +3,9 @@
 yes | sudo pacman -Syyu
 
 
-yes | sudo pacman -S feh rofi lxappearance maim arandr xrandr dmenu xdootool gucharmap bdf-unifont ttf-anonymous-pro xorg-xfd python-mpd2 python-iwlib khal playerctl wget unzip neovim nodejs npm fzf ranger ripgrep xclip yarn python-pipenv the_silver_searcher tmux neofetch autojump zsh zshdb powerline-fonts dos2unix linux-headers
+yes | sudo pacman -S feh rofi lxappearance maim arandr dmenu xdotool gucharmap bdf-unifont ttf-anonymous-pro xorg-xfd python-mpd2 python-iwlib khal playerctl wget unzip neovim nodejs npm fzf ranger ripgrep xclip yarn python-pipenv the_silver_searcher tmux neofetch zsh zshdb powerline-fonts dos2unix linux-headers ttf-font-awesome
 
-yes | yay -S pygtk ptxconf-git nerd-fonts-complete mpris-ctl polybar-git font-awesome zscroll-git openrazer-meta polychromatic rofi-file-browser-extended-git
+yay -S pygtk ptxconf-git nerd-fonts-complete mpris-ctl polybar-git zscroll-git openrazer-meta polychromatic rofi-file-browser-extended-git autojump 
 
 sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 
