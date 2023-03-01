@@ -1,0 +1,50 @@
+set number
+set relativenumber 
+set which-key
+"set timeoutlen=5000
+set notimeout
+set multicursor
+set surround
+
+""" Surround Plugin ------------------
+" Emulates vim-surround. Mappings to easily delete, change and add such surroundings in pairs
+" Basic Commands:
+" cs	Change surroundings
+" cst 	Change surroundings tag
+" ds	Delete surroundings
+" dst	Delete surroundings tag
+" ys	Surround text object
+" See https://github.com/tpope/vim-surround/blob/master/doc/surround.txt for details
+
+let mapleader = " "
+nmap <leader>ed <action>(ShowErrorDescription)
+nmap <leader>en <action>(GotoNextError)
+nmap <leader>ep <action>(GotoPreviousError) 
+nmap <leader>i <action>(GotoImplementation)
+nmap <leader>d <action>(GotoDeclaration)
+nmap <leader>qd <action>(QuickJavaDoc)
+nmap <leader>qi <action>(QuickImplementations)
+nmap <leader>D <action>(GotoTypeDeclaration)
+nmap <leader>A <action>($SelectAll)
+nmap <leader>o <action>(OverrideMethods)
+nmap <leader>f <action>(Find)
+nmap <leader>u <action>(FindUsages)
+nmap <leader>r <action>(Replace)
+nmap <leader>m <action>(MethodHierarchy)
+nmap <A-S-Down> <action>(EditorCloneCaretBelow)
+nmap <A-S-Up> <action>(EditorCloneCaretAbove)
+nmap <C-c> <action>($Copy)
+nmap <C-v> <action>($Paste)
+nmap <C-x> <action>($Cut)
+nmap <C-e> <action>(RecentFiles)
+nmap <C-y> <action>(EditorDeleteLine)
+nmap <C-h> <action>(TypeHierarchy)
+"Expand Select <C-w> needs to be set on IDE
+
+"Commands to move lines
+nnoremap <A-Down> :m .+1<CR>==
+nnoremap <A-Up> :m .-2<CR>==
+inoremap <A-Down> <Esc>:m .+1<CR>==gi
+inoremap <A-Up> <Esc>:m .-2<CR>==gi
+vnoremap <A-Down> :m '>+1<CR>gv=gv
+vnoremap <A-Up> :m '<-2<CR>gv=gv
