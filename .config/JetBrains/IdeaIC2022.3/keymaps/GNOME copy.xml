@@ -15,12 +15,23 @@
     <keyboard-shortcut first-keystroke="ctrl f4" />
     <keyboard-shortcut first-keystroke="alt w" />
   </action>
+  <action id="Debugger.PopFrame">
+    <keyboard-shortcut first-keystroke="f6" />
+  </action>
   <action id="Diff.ShowSettingsPopup" />
   <action id="EditorCloneCaretAbove">
     <keyboard-shortcut first-keystroke="shift alt up" />
   </action>
   <action id="EditorCloneCaretBelow">
     <keyboard-shortcut first-keystroke="shift alt down" />
+  </action>
+  <action id="EditorLookupDown" />
+  <action id="EditorLookupUp" />
+  <action id="EditorScrollDown">
+    <keyboard-shortcut first-keystroke="shift ctrl down" />
+  </action>
+  <action id="EditorScrollUp">
+    <keyboard-shortcut first-keystroke="shift ctrl up" />
   </action>
   <action id="EditorSelectLine">
     <keyboard-shortcut first-keystroke="ctrl l" />
@@ -47,7 +58,6 @@
   </action>
   <action id="Git.Commit.Stage" />
   <action id="GotoDeclaration">
-    <keyboard-shortcut first-keystroke="ctrl b" />
     <mouse-shortcut keystroke="control button1" />
     <keyboard-shortcut first-keystroke="shift ctrl d" />
   </action>
@@ -64,11 +74,14 @@
   </action>
   <action id="Markdown.Styling.CreateLink" />
   <action id="MethodDown">
-    <keyboard-shortcut first-keystroke="shift ctrl down" />
+    <keyboard-shortcut first-keystroke="ctrl down" />
   </action>
+  <action id="MethodOverloadSwitchDown" />
+  <action id="MethodOverloadSwitchUp" />
   <action id="MethodUp">
-    <keyboard-shortcut first-keystroke="shift ctrl up" />
+    <keyboard-shortcut first-keystroke="ctrl up" />
   </action>
+  <action id="Move" />
   <action id="MoveStatementDown">
     <keyboard-shortcut first-keystroke="alt down" />
   </action>
@@ -90,6 +103,12 @@
   <action id="QuickTypeDefinition">
     <keyboard-shortcut first-keystroke="shift ctrl alt q" />
   </action>
+  <action id="SearchEverywhere.NavigateToNextGroup">
+    <keyboard-shortcut first-keystroke="page_down" />
+  </action>
+  <action id="SearchEverywhere.NavigateToPrevGroup">
+    <keyboard-shortcut first-keystroke="page_up" />
+  </action>
   <action id="ShelveChanges.UnshelveWithDialog" />
   <action id="ShowContent" />
   <action id="ShowErrorDescription">
@@ -104,7 +123,12 @@
     <keyboard-shortcut first-keystroke="ctrl k" second-keystroke="ctrl v" />
   </action>
   <action id="Terminal.ClearBuffer" />
+  <action id="ToggleLineBreakpoint">
+    <keyboard-shortcut first-keystroke="ctrl f8" />
+    <keyboard-shortcut first-keystroke="ctrl b" />
+  </action>
   <action id="UsageView.ShowRecentFindUsages" />
   <action id="Vcs.Log.FocusTextFilter" />
   <action id="org.intellij.plugins.markdown.ui.actions.styling.InsertImageAction" />
+  <action id="org.intellij.plugins.markdown.ui.actions.styling.ToggleBoldAction" />
 </keymap>
