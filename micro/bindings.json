@@ -1,0 +1,19 @@
+{
+    "Alt-/": "lua:comment.comment",
+    "Alt-CtrlJ": "lua:joinLines.joinLines",
+    "Alt-CtrlO": "StartOfLine,InsertNewline,CursorUp",
+    "Alt-[": "OutdentLine",
+    "Alt-]": "IndentLine",
+    "Alt-f": "command:tree",
+    "Alt-j": "SpawnMultiCursor",
+    "Alt-z": "Redo",
+    "CtrlG": "command-edit:goto ",
+    "CtrlH": "ToggleHelp",
+    "CtrlK": "ToggleKeyMenu",
+    "CtrlL": "SelectLine",
+    "CtrlO": "EndOfLine,InsertNewline",
+    "CtrlShiftX": "CutLine",
+    "CtrlUnderscore": "lua:comment.comment",
+    "CtrlY": "DeleteLine",
+    "F3": "SkipMultiCursor"
+}
