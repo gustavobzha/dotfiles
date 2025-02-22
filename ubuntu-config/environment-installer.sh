@@ -105,3 +105,67 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 #Install Vim Plugins and Coc Plugins
 nvim -c ':PlugInstall | quit | quit | quit'
+
+
+echo -e "\nConfiguring Swap size to 16GB"
+cp /etc/fstab /etc/fstab.backup
+
+# Verifica se o script está sendo executado como root
+#if [[ $EUID -ne 0 ]]; then
+#    echo "This script must be run as root. Use sudo."
+#    exit 1
+#fi
+
+# Verifica se há espaço suficiente para criar o swapfile
+FREE_SPACE=$(df -h / | awk 'NR==2 {print $4}')
+if [[ ${FREE_SPACE%G} -lt 16 ]]; then
+    echo "Not enough disk space to create a 16GB swapfile. Free space: $FREE_SPACE"
+    exit 1
+fi
+
+# Cria um novo swapfile de 16GB
+echo "Creating new 16GB swapfile at /swapfile..."
+if ! sudo fallocate -l 16G /swapfile; then
+    echo "Failed to create swapfile. Exiting."
+    exit 1
+fi
+
+sudo chmod 600 /swapfile
+if ! sudo mkswap /swapfile; then
+    echo "Failed to format swapfile. Exiting."
+    sudo rm -f /swapfile
+    exit 1
+fi
+
+# Verifica se há um swapfile ativo
+OLD_SWAPFILE=$(sudo swapon --show | tail -n 1 | awk '{print $1}')
+if [[ -z "$OLD_SWAPFILE" ]]; then
+    echo "No active swapfile found. Adding /swapfile to /etc/fstab..."
+    echo "/swapfile	none	swap	sw	0	0" | sudo tee -a /etc/fstab > /dev/null
+else
+    echo "Old swapfile found: $OLD_SWAPFILE"
+
+    # Desativa o swapfile atual
+    echo "Deactivating old swapfile..."
+    if ! sudo swapoff "$OLD_SWAPFILE"; then
+        echo "Failed to deactivate old swapfile. Exiting."
+        exit 1
+    fi
+
+    # Atualiza o /etc/fstab para usar o novo swapfile
+    echo "Updating /etc/fstab to use /swapfile..."
+    sudo sed -i -e "s|^$OLD_SWAPFILE|/swapfile|" /etc/fstab
+
+    # Remove o swapfile antigo
+    echo "Removing old swapfile..."
+    sudo rm -f "$OLD_SWAPFILE"
+fi
+
+# Ativa o novo swapfile
+echo "Activating new swapfile..."
+if ! sudo swapon /swapfile; then
+    echo "Failed to activate new swapfile. Exiting."
+    exit 1
+fi
+
+echo "New Swap /swapfile configuration updated successfully."
