@@ -7,7 +7,6 @@ echo -e "\n\nAdd flathub repo to remote source flatpak\n"
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo -e "\n\nInstalling flatpak apps for personal use\n"
-flatpak install com.dropbox.Client -y
 flatpak install com.bitwarden.desktop -y
 flatpak install flathub com.obsproject.Studio -y
 flatpak install flathub rest.insomnia.Insomnia -y
@@ -170,6 +169,16 @@ fi
 
 echo "New Swap /swapfile configuration updated successfully."
 
+
+echo -e "\n Download Dropbox\n\n"
+wget -O dropbox.deb  https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2024.04.17_amd64.deb || echo "Unable to download dropbox.deb"
+
+if [[ -a "dropbox.deb" ]]; then
+  echo "Installing dropbox with DPKG"
+  sudo dpkg -i dropbox.deb
+else
+  echo "Dropbox will not install due to previous errors";
+fi
 
 echo -e "\nConfiguration Gnome shortcuts"
 # Change default shortcuts
