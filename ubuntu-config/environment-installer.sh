@@ -170,6 +170,9 @@ fi
 echo "New Swap /swapfile configuration updated successfully."
 
 
+echo -e "\nDownload Dropbox dependency\n"
+sudo apt install python3-gpg
+
 echo -e "\n Download Dropbox\n\n"
 wget -O dropbox.deb  https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2024.04.17_amd64.deb || echo "Unable to download dropbox.deb"
 
