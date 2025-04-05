@@ -43,6 +43,7 @@ declare -a fonts=(
     SpaceMono
     Ubuntu
     UbuntuMono
+    NerdFontsSymbolsOnly
 )
 
 version='3.3.0'
