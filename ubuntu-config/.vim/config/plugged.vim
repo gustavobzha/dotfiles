@@ -19,7 +19,10 @@ Plug 'itchyny/vim-gitbranch'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'norcalli/nvim-colorizer.lua'
 
 "Plug 'terryma/vim-multiple-cursors'
 
 call plug#end()
+
+lua require'colorizer'.setup()
