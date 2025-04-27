@@ -16,35 +16,145 @@ set surround
 " ys	Surround text object
 " See https://github.com/tpope/vim-surround/blob/master/doc/surround.txt for details
 
+
 let mapleader = " "
-nmap <leader>A <action>($SelectAll)
-nmap <leader>D <action>(GotoTypeDeclaration)
-nmap <leader>d <action>(GotoDeclaration)
+
+" ================ Comment (<leader>c) ================
+let g:WhichKeyDesc_c = "<leader>c Comment"
+nmap <leader>cb <action>(CommentByBlockComment)
+let g:WhichKeyDesc_cb = "<leader>cb Block comment"
+nmap <leader>cl <action>(CommentByLineComment)
+let g:WhichKeyDesc_cl = "<leader>cl Comment line(s)"
+
+" ================ Debug Group (<leader>d) ================
+let g:WhichKeyDesc_d = "<leader>d Debug"
+nmap <leader>da <action>(ViewBreakpoints)
+let g:WhichKeyDesc_da = "<leader>da View all breakpoints"
+nmap <leader>db <action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_db = "<leader>db Toggle line breakpoint"
+nmap <leader>df <action>(ForceRunToCursor)
+let g:WhichKeyDesc_df = "<leader>df Force run to cursor"
+nmap <leader>dm <action>(XDebugger.MuteBreakpoints)
+let g:WhichKeyDesc_dm = "<leader>dm Mute breakpoints"
+nmap <leader>dr <action>(Debugger.PopFrame)
+let g:WhichKeyDesc_dr = "<leader>dr Reset frame"
+
+" ================ Documentation Group (<leader>D) ================
+let g:WhichKeyDesc_D = "<leader>D Documentation"
+nmap <leader>Dd <action>(QuickJavaDoc)
+let g:WhichKeyDesc_Dd = "<leader>Dd JavaDoc"
+nmap <leader>Di <action>(QuickImplementations)
+let g:WhichKeyDesc_Di = "<leader>Di Implementations"
+
+" ================ Error Handling Group (<leader>e) ================
+let g:WhichKeyDesc_e = "<leader>e Error"
 nmap <leader>ed <action>(ShowErrorDescription)
+let g:WhichKeyDesc_ed = "<leader>ed Error description"
 nmap <leader>en <action>(GotoNextError)
+let g:WhichKeyDesc_en = "<leader>en Next error"
 nmap <leader>ep <action>(GotoPreviousError)
-nmap <leader>f <action>(Find)
-nmap <leader>i <action>(GotoImplementation)
-nmap <leader>m <action>(MethodHierarchy)
-nmap <leader>o <action>(OverrideMethods)
-nmap <leader>qd <action>(QuickJavaDoc)
-nmap <leader>qi <action>(QuickImplementations)
-nmap <leader>u <action>(FindUsages)
-nmap <leader>r <action>(Replace)
+let g:WhichKeyDesc_ep = "<leader>ep Previous error"
+
+" ================ File/Find Group (<leader>f) ================
+let g:WhichKeyDesc_f = "<leader>f Find/File"
+nmap <leader>fa <action>(FindInPath)
+let g:WhichKeyDesc_fa = "<leader>fa Find in project"
+nmap <leader>ff <action>(Find)
+let g:WhichKeyDesc_ff = "<leader>ff Find in file"
+nmap <leader>fr <action>(RecenteFiles)
+let g:WhichKeyDesc_fr = "<leader>fr Recent files"
+nmap <leader>fs <action>(Switcher)
+let g:WhichKeyDesc_fs = "<leader>fs Switch recent files"
+nmap <leader>fu <action>(FindUsages)
+let g:WhichKeyDesc_fu = "<leader>fu Find usages"
+
+" ================ Git Group (<leader>G) ================
+let g:WhichKeyDesc_G = "<leader>G Git"
+nmap <leader>Gr <action>(Vcs.RollbackChangedLines)
+let g:WhichKeyDesc_Gr = "<leader>Gr Rollback lines"
+nmap <leader>Gn <action>(VcsShowNextChangeMarker)
+let g:WhichKeyDesc_Gn = "<leader>Gn Next Change Marker"
+nmap <leader>Gp <action>(VcsShowPrevChangeMarker)
+let g:WhichKeyDesc_Gp = "<leader>Gp Prev Change Marker"
+
+" ================ Goto Group (<leader>g) ================
+let g:WhichKeyDesc_g = "<leader>g Go To"
+nmap <leader>gc G}%
+let g:WhichKeyDesc_gc = "<leader>gc Current Class Declaration"
+nmap <leader>gd <action>(GotoDeclaration)
+let g:WhichKeyDesc_gd = "<leader>gd Declaration"
+nmap <leader>gD <action>(GotoTypeDeclaration)
+let g:WhichKeyDesc_gD = "<leader>gD Type declaration"
+nmap <leader>gi <action>(GotoImplementation)
+let g:WhichKeyDesc_gi = "<leader>gi Implementation"
+nmap <leader>gs <action>(GotoSuperMethod)
+let g:WhichKeyDesc_gs = "<leader>gs Super method"
+
+" ================ Hierarchy Group (<leader>h) ================
+let g:WhichKeyDesc_h = "<leader>h Hierarchy"
+nmap <leader>hm <action>(MethodHierarchy)
+let g:WhichKeyDesc_hm = "<leader>hm Method hierarchy"
+nmap <leader>hh <action>(TypeHierarchy)
+let g:WhichKeyDesc_hh = "<leader>hh Type hierarchy"
+
+" ================ Jump Group (<leader>j) ================
+" Needs also AceJump plugin
+Plug 'easymotion/vim-easymotion'
+map <leader>J <Plug>(easymotion-s)
+let g:WhichKeyDesc_J = "<leader>J Jump backward"
+map <leader>j <Plug>(easymotion-f)
+let g:WhichKeyDesc_hm = "<leader>j Jump forward"
+
+" ================ Refactor Group (<leader>r) ================
+let g:WhichKeyDesc_r = "<leader>r Refactor"
+nmap <leader>ro <action>(OverrideMethods)
+let g:WhichKeyDesc_ro = "<leader>ro Override Methods"
+nmap <leader>rr <action>(Replace)
+let g:WhichKeyDesc_rr = "<leader>rr Replace"
+nmap <leader>rs <action>(ChangeSignature)
+let g:WhichKeyDesc_rs = "<leader>rs Signature"
+
+" ================ Select Group (<leader>s) ================
+let g:WhichKeyDesc_s = "<leader>s Select"
+nmap <leader>sa <action>($SelectAll)
+let g:WhichKeyDesc_sa = "<leader>sa Select All"
+nmap <leader>sw <action>(EditorSelectWord)
+let g:WhichKeyDesc_sw = "<leader>sw Select word"
+
+" ================ Show/Hide Group (<leader>S) ================
+let g:WhichKeyDesc_S = "<leader>S Show/Hide"
+nmap <leader>Sc <action>(ActivateCommitToolWindow)
+let g:WhichKeyDesc_Sc = "<leader>Sc Commit tool"
+nmap <leader>Sf <action>(ActivateFindToolWindow)
+let g:WhichKeyDesc_Sf = "<leader>Sf Find(Usage) tool"
+nmap <leader>Sg <action>(ActivateVersionControlToolWindow)
+let g:WhichKeyDesc_Sg = "<leader>Sg Git tool"
+nmap <leader>Sp <action>(ActivateProjectToolWindow)
+let g:WhichKeyDesc_Sp = "<leader>Sp Project tool"
+nmap <leader>Sh <action>(ActivateHierarchyToolWindow)
+let g:WhichKeyDesc_Sh = "<leader>Sh Hierarchy tool"
+nmap <leader>Sp <action>(QuickPreview)
+let g:WhichKeyDesc_Sp = "<leader>Sp Quick File preview"
+
+" ================ Windows/Split (<leader>w) ================
+let g:WhichKeyDesc_w = "<leader>w Window"
+map <leader>wv <Action>(SplitVertically)
+let g:WhichKeyDesc_wv = "<leader>wv Split vertically"
+map <leader>wh <Action>(SplitHorizontally)
+let g:WhichKeyDesc_wh = "<leader>wh Split horizontally"
+map <leader>wu <Action>(Unsplit)
+let g:WhichKeyDesc_wu = "<leader>wu Unsplit"
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+let g:WhichKeyDesc_wm = "<leader>wm Move to Opposite tab group"
+
 nmap <A-S-Down> <action>(EditorCloneCaretBelow)
 nmap <A-S-Up> <action>(EditorCloneCaretAbove)
 nmap <C-c> <action>($Copy)
 nmap <C-v> <action>($Paste)
 nmap <C-x> <action>($Cut)
-nmap <C-e> <action>(RecentFiles)
 nmap <C-y> <action>(EditorDeleteLine)
-nmap <C-h> <action>(TypeHierarchy)
 "Expand Select <C-w> needs to be set on IDE
 
 "Commands to move lines
-nnoremap <A-Down> :m .+1<CR>==
-nnoremap <A-Up> :m .-2<CR>==
-inoremap <A-Down> <Esc>:m .+1<CR>==gi
-inoremap <A-Up> <Esc>:m .-2<CR>==gi
-vnoremap <A-Down> :m '>+1<CR>gv=gv
-vnoremap <A-Up> :m '<-2<CR>gv=gv
+noremap <A-Down> :m .+1<CR>==
+noremap <A-Up> :m .-2<CR>==
