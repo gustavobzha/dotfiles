@@ -37,7 +37,7 @@ alias ls='ls --color=auto'
 alias tree='tree -C'
 
 #List ports
-alias list-ports='sudo lsof -i -P -n | grep LISTEN'
+alias list-ports='sudo lsof -i -P -n | head -n 1 && sudo lsof -i -P -n | grep LISTEN'
 
 #List services
 alias list-active-services='systemctl list-units --type=service --state=active'
